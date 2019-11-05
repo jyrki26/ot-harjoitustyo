@@ -1,0 +1,113 @@
+commit 29cdc323daa4791553438dc50522c0e626c72ebc
+Author: Jyrki <jyrki.kaukoranta@helsinki.fi>
+Date:   Tue Nov 5 15:49:52 2019 +0200
+
+    muutokset
+
+ tiedostoja/file1             | 1 -
+ tiedostoja/{file2 => file22} | 0
+ 2 files changed, 1 deletion(-)
+
+commit 6b81c3a6081ed8722c4dc191e15ad9d5683414b5
+Author: Jyrki <jyrki.kaukoranta@helsinki.fi>
+Date:   Tue Nov 5 15:42:19 2019 +0200
+
+    tiedostoja
+
+ tiedostoja/file1 | 1 +
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 1 insertion(+)
+
+commit 25cf5d19493f3dde6e107235022189249303fe95
+Author: Jyrki <jyrki.kaukoranta@helsinki.fi>
+Date:   Tue Nov 5 15:31:30 2019 +0200
+
+    eka ja kolmas
+
+ eka.txt    | 2 +-
+ kolmas.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit b11da5fbfaaf62aba5886d39b872241e58ba6801
+Author: Jyrki <jyrki.kaukoranta@helsinki.fi>
+Date:   Tue Nov 5 04:32:11 2019 +0200
+
+    nimi muutettu
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit d801cd26e65d47dc3c67313fd05408c32fde031e
+Author: Jyrki <jyrki.kaukoranta@helsinki.fi>
+Date:   Tue Nov 5 04:30:53 2019 +0200
+
+    toinen poistettu
+
+ toinen.txt | 2 --
+ 1 file changed, 2 deletions(-)
+
+commit fb3d5d8cae09d9a25439d24ee18fec91ff912bb0
+Author: Jyrki <jyrki.kaukoranta@helsinki.fi>
+Date:   Tue Nov 5 04:27:50 2019 +0200
+
+    lisätty ja poistettu
+
+ tiedosto.txt | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+commit 573c4a4dd54d7365c72e079ffb2a7da66f96ca69
+Author: Jyrki <jyrki.kaukoranta@helsinki.fi>
+Date:   Tue Nov 5 04:24:56 2019 +0200
+
+    lisatty tekstia
+
+ tiedosto.txt | 42 +++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 41 insertions(+), 1 deletion(-)
+
+commit 0fe3d15b5546ed029243df79b3c817f6f41d6f18
+Author: Jyrki <jyrki.kaukoranta@helsinki.fi>
+Date:   Tue Nov 5 04:16:25 2019 +0200
+
+    stuff lisätty
+
+ stuff/tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 5fa656b64741c4799c9a40c5f1f46c23e1d60be5
+Author: Jyrki <jyrki.kaukoranta@helsinki.fi>
+Date:   Tue Nov 5 04:14:01 2019 +0200
+
+    muutokset
+
+ kolmas.txt | 1 +
+ toinen.txt | 2 ++
+ 2 files changed, 3 insertions(+)
+
+commit a1377c3693d7d4f365561d8d699543c11401596b
+Author: Jyrki <jyrki.kaukoranta@helsinki.fi>
+Date:   Tue Nov 5 04:12:20 2019 +0200
+
+    kolmas.txt lisätty
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 30669becba46db96f54021b5d84383a6a36378f2
+Author: Jyrki <jyrki.kaukoranta@helsinki.fi>
+Date:   Tue Nov 5 04:08:04 2019 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 7756c43aa7a43d698ae873da6424bf89f81b61de
+Author: Jyrki <jyrki.kaukoranta@helsinki.fi>
+Date:   Tue Nov 5 04:04:29 2019 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
