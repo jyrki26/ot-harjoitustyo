@@ -3,7 +3,7 @@
 __Tämä on read me-tiedosto.__ _Tässä on tietoa ohjelmasta_
 
 ## Doumentaatio
-[Työaikaseuranta] (https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/tyoaikakirjanpito.md)
+[Työaikaseuranta](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/tyoaikakirjanpito.md)
 
 ### Tehtävät
 #### Viikko 1
