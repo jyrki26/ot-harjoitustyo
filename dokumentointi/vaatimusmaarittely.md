@@ -21,12 +21,12 @@ Sovellukseen tulee aluksi ainoastaan yksi käyttäjäryhmä, tavalliset käyttä
   * Käyttäjä voi valita haluamansa suunnan painamalla näkymässä olevaa painiketta
 * Ohjelma tilastoi oikeat ja väärät vastaukset sanakohtaisesti.
 * Ohjelma arpoo kysyttävät sanat painottaen vähemmän kysyttyjä tai sanoja, joihin on vastattu useasti väärin.
-* Käyttäjä voi kirjautua ulos järjeslmästä kummassakin näkymässä.
+* Käyttäjä voi kirjautua ulos järjestelmästä kummassakin näkymässä.
 
 
 ## Jatkokehitysideoita
 * Tilastonäkymän luominen
-  * Näkymässä näkyisivät käyttäjän antamia vastauksia koskevat tilastot, kuten annettujen vastausten määrä, oikeiden vastausten prosenttimäärä.
+  * Näkymässä näkyisivät käyttäjän antamia vastauksia koskevat tilastot, kuten annettujen vastausten määrä ja oikeiden vastausten prosenttimäärä.
 * Harjoittelu-tilan laajentaminen
   * Esim. mahdollisuus harjoitella sanoja vain tietystä sanaluokasta tai aihealueesta
   * Tämä edellyttäisi kyseisten tietojen tallentamismahdollisuuden lisäämistä sanojen lisäys -näkymään
