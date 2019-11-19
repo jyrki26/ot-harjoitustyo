@@ -4,7 +4,8 @@ Sovelluksen tarkoituksena on auttaa käyttäjää vieraan kielen sanojen opiskel
 
 ## Dokumentaatio
 [Vaatimusmäärittely](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/vaatimusmaarittely.md)<br/>
-[Työaikaseuranta](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/tyoaikakirjanpito.md)
+[Työaikaseuranta](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/tyoaikakirjanpito.md)<br>/
+[Käyttöhje](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/kayttoohje.md)
 
 ## Komentorivitoiminnot
 
@@ -13,3 +14,16 @@ Sovelluksen tarkoituksena on auttaa käyttäjää vieraan kielen sanojen opiskel
 ```console
 mvn compile exec:java -Dexec.mainClass=kieltenharjoitteluohjelma.ui.Main
 ```
+
+#### Testaus
+
+Testit voi suorittaa komennolla
+```console
+mvn test
+```
+
+Testikattavuusraportti luodaan komennolla
+```
+mvn jacoco:report
+´´´
+Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto *target/site/jacoco/index.html*
