@@ -4,7 +4,7 @@ Sovelluksen tarkoituksena on auttaa käyttäjää vieraan kielen sanojen opiskel
 
 ## Dokumentaatio
 [Vaatimusmäärittely](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/vaatimusmaarittely.md)<br/>
-[Työaikaseuranta](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/tyoaikakirjanpito.md)<br>/
+[Työaikaseuranta](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/tyoaikakirjanpito.md)<br/>
 [Käyttöhje](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/kayttoohje.md)
 
 ## Komentorivitoiminnot
