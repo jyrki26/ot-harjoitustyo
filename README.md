@@ -6,8 +6,10 @@ Sovelluksen tarkoituksena on auttaa käyttäjää vieraan kielen sanojen opiskel
 [Vaatimusmäärittely](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/vaatimusmaarittely.md)<br/>
 [Työaikaseuranta](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/tyoaikakirjanpito.md)
 
-## Tehtävät
-#### Viikko 1
-[komentorivi.txt](https://github.com/jyrki26/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt) <br/>
-[gitlog.txt](https://github.com/jyrki26/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
+## Komentorivitoiminnot
 
+#### Ohjelman käynnistäminen
+
+```console
+mvn compile exec:java -Dexec.mainClass=kieltenharjoitteluohjelma.ui.Main
+```

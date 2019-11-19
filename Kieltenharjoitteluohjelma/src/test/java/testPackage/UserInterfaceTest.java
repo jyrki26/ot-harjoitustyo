@@ -1,3 +1,5 @@
+package testPackage;
+
 import java.util.Scanner;
 import org.junit.Before;
 import org.junit.Test;
