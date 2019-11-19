@@ -2,3 +2,5 @@
 Päivä | Aika | Mitä tein
 ---------|---------|-------------
 12.11.2019 | 2 | Ohjelman suunnittelua ja alustavan määrittelydokumentin kirjoittamista
+18.11.2019 | 3 | Javan kertaamista ja ohjelman perustoiminnalisuuksien kirjoittamista.
+19.11.2019 | 6 | Ohjelman perustoiminnalisuuksien kirjoittamista.
