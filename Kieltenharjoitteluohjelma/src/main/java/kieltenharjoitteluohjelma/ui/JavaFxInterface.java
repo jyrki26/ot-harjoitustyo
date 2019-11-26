@@ -93,7 +93,7 @@ public class JavaFxInterface extends Application {
                 primaryStage.setScene(addWord);
             }
         });
-        
+
         practiseFinFor.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -139,31 +139,30 @@ public class JavaFxInterface extends Application {
         addWordsPane.setRight(exit);
 
         addWord = new Scene(addWordsPane, 600, 400);
-        
+
         // Practise
-        
         BorderPane practisePane = new BorderPane();
-        
+
         translatableWord = domain.practiseFinForFirst(language);
         Label wordToTranslate = new Label("Käännä seuraava sana: " + translatableWord);
-        
+
         Label translationLabel = new Label("Käännös");
         TextField translation = new TextField();
         Button answer = new Button("Vastaa");
         Button newWord = new Button("Uusi sana");
         Label responseText = new Label();
-        
+
         HBox translationBox = new HBox();
         translationBox.getChildren().addAll(translationLabel, translation, answer);
         GridPane newWordBox = new GridPane();
         newWordBox.add(responseText, 1, 1, 3, 1);
         newWordBox.add(newWord, 1, 4);
-        
+
         answer.setOnAction((event) -> {
             responseText.setText(domain.practiseFinForSec(language, translatableWord, answer.getText()));
             practisePane.setBottom(newWordBox);
         });
-        
+
         newWord.setOnAction((event) -> {
             translatableWord = domain.practiseFinForFirst(language);
             String word2 = translatableWord;
@@ -171,11 +170,11 @@ public class JavaFxInterface extends Application {
             wordToTranslate.setText("Käännä seuraava sana: " + word2);
             practisePane.setBottom(null);
         });
-        
+
         practisePane.setTop(wordToTranslate);
         practisePane.setRight(exit);
         practisePane.setCenter(translationBox);
-        
+
         practise = new Scene(practisePane, 600, 400);
 
         primaryStage.setTitle("Kieltenharjoitteluohjelma");
@@ -183,7 +182,6 @@ public class JavaFxInterface extends Application {
         primaryStage.show();
 
     }
-
 
     public static void main(String[] args) {
         launch(args);
