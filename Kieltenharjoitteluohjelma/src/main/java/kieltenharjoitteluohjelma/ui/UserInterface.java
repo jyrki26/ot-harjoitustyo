@@ -19,11 +19,9 @@ public class UserInterface {
         this.domain = domain;
         this.startingCommands = new TreeMap<>();
         this.commands = new TreeMap<>();
-        this.languages = domain.getLanguages();
 
-        startingCommands.put("0", "Lopeta");
-        startingCommands.put("1", "Englanti");
-        startingCommands.put("2", "Ruotsi");
+        startingCommands.put("1", "Harjoittele englantia");
+        startingCommands.put("2", "Harjoittele ruotsia");
 
         commands.put("1", "Lisää sanapari");
         commands.put("2", "Harjoittelu: Suomi-Vieras kieli");
@@ -69,10 +67,10 @@ public class UserInterface {
             addWord(language);
         }
         if (command.equals("2")) {
-
+            practiseFinFor(language);
         }
         if (command.equals("3")) {
-
+            practiseForFin(language);
         }
     }
 
@@ -112,6 +110,27 @@ public class UserInterface {
         if(command.equals("1")){
             addWord(language);
         }
+    }
+    
+    public void practiseFinFor(int language){
+        System.out.println("Kirjoita q lopettaaksesi harjoittelu.");
+        
+        
+        while(true){
+            String word = domain.practiseFinForFirst(language);
+            System.out.println("Anna käännös sanalle " + word);
+            String answer = scanner.nextLine();
+            if(answer.equals("q")){
+                break;
+            }
+            System.out.println(domain.practiseFinForSec(language, word, answer));
+            
+        }
+        
+    }
+    
+    public void practiseForFin(int language){
+        domain.practiseForFinFirst(language);
     }
 
 }

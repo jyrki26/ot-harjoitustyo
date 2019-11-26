@@ -16,17 +16,4 @@ public class KieltenharjoitteluTest {
         domain = new Kieltenharjoittelu();
     }
 
-    @Test
-    public void addWordKeyWorks(){
-        domain.addWord(1, "kissa", "cat");
-        HashMap<String, String> words = domain.getLanguages().get(1);
-        assertTrue(words.containsKey("kissa"));
-    }
-    
-    @Test
-    public void addWordValueWorks(){
-        domain.addWord(1, "kissa", "cat");
-        HashMap<String, String> words = domain.getLanguages().get(1);
-        assertEquals("cat", words.get("kissa"));
-    }
 }
