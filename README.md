@@ -8,9 +8,21 @@ Sovelluksen tarkoituksena on auttaa käyttäjää vieraan kielen sanojen opiskel
 [Käyttöhje](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/kayttoohje.md)<br/>
 [Arkkitehtuurikuvaus](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/arkkitehtuuri.md)
 
+## Releaset
+#### Viikko 5
+[Viikko 5](https://github.com/jyrki26/ot-harjoitustyo/releases/tag/viikko5)
+
 ## Komentorivitoiminnot
 
 #### Ohjelman käynnistäminen
+
+Ohjelman voi käynnistää antamlla terminaalissa kansiossa johon viikon 5 releasesta on ladannut kieltenharjoittelu.jar -tiedoston komennon:
+
+```console
+java -jar kieltenharjoittelu.jar
+```
+
+tai lataamalla ohjelman kokonaan ja antamalla komennon.
 
 ```console
 mvn compile exec:java -Dexec.mainClass=kieltenharjoitteluohjelma.ui.Main
@@ -28,3 +40,18 @@ Testikattavuusraportti luodaan komennolla
 mvn jacoco:report
 ```
 Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto *target/site/jacoco/index.html*
+
+#### Checkstyle tarkastuksen teko
+Koodille voi tehdä checkstyletarkastuksen antamalla terminaalissa kansiossa, jossa sovellus on seuraavan komennon.
+
+``` console
+mvn jxr:jxr checkstyle:checkstyle
+```
+Mahdolliset virheilmoitukset selviävät avaamalla selaimella tiedosto *target/site/checkstyle.html*
+
+#### Jarin luonti
+Ohjelmasta voi luoda jar-tiedoston antamalla konsolissa kansiossa, jossa ohjelma on komennon:
+``` console
+mvn package
+```
+Komento generoi hakemistoon target suoritettavan jar-tiedoston *Kieltenharjoitteluohjelma-1.0-SNAPSHOT.jar*

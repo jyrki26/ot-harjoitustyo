@@ -1,7 +1,5 @@
 # Arkkitehtuurikuvaus
 
-Dao-luokkia ei ole vielä toteutettu.
-
 ## Sovelluslogiikka
 
 ### Alustava luokkakaavio
