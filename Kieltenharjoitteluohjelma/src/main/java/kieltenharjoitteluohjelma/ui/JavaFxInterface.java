@@ -11,27 +11,41 @@ import javafx.stage.Stage;
 import javafx.scene.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
 import kieltenharjoitteluohjelma.domain.Kieltenharjoittelu;
+import kieltenharjoitteluohjelma.domain.KieltenharjoitteluService;
+import kieltenharjoitteluohjelma.dao.UserDao;
+import kieltenharjoitteluohjelma.dao.FileUserDao;
+import kieltenharjoitteluohjelma.domain.User;
 
 public class JavaFxInterface extends Application {
 
     Kieltenharjoittelu domain;
+    KieltenharjoitteluService service;
     private Scene main;
     private Scene languageMain;
     private Scene practise;
     private Scene addWord;
+    private Scene login;
+    private Scene addUserScene;
     private int language;
     private String translatableWord;
 
     @Override
     public void init() throws Exception {
         domain = new Kieltenharjoittelu();
+        FileUserDao userDao = new FileUserDao();
+        service = new KieltenharjoitteluService(userDao);
         language = 0;
     }
 
@@ -177,10 +191,141 @@ public class JavaFxInterface extends Application {
 
         practise = new Scene(practisePane, 600, 400);
 
+        // Login scene
+        GridPane loginPane = new GridPane();
+        loginPane.setAlignment(Pos.CENTER);
+        loginPane.setHgap(20);
+        loginPane.setVgap(10);
+        loginPane.setPadding(new Insets(25, 25, 25, 25));
+
+        Text scenetitle = new Text("Tervetuloa");
+        scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+        loginPane.add(scenetitle, 0, 0, 2, 1);
+
+        Label userName = new Label("Käyttäjätunnus:");
+        loginPane.add(userName, 0, 1);
+
+        TextField userTextField = new TextField();
+        loginPane.add(userTextField, 1, 1);
+
+        Label pw = new Label("Salasana:");
+        loginPane.add(pw, 0, 2);
+
+        PasswordField pwBox = new PasswordField();
+        pwBox.setPromptText("Salasana");
+        loginPane.add(pwBox, 1, 2);
+
+        Button btn = new Button("Kirjaudu sisään");
+        HBox hbBtn = new HBox(10);
+        hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
+        hbBtn.getChildren().add(btn);
+        loginPane.add(hbBtn, 1, 4);
+
+        final Text actiontarget = new Text();
+        loginPane.add(actiontarget, 1, 6);
+
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent e) {
+                if (service.passwordCorrect(userTextField.getText(), pwBox.getText())) {
+                    primaryStage.setScene(main);
+                } else {
+                    actiontarget.setFill(Color.FIREBRICK);
+                    actiontarget.setText("Käyttäjätunnus tai salasana ei ole oikein.");
+                    userTextField.clear();
+                    pwBox.clear();
+                }
+            }
+        });
+
+        Button newUserbtn = new Button("Uusi käyttäjä");
+        HBox newUserBox = new HBox();
+        newUserBox.setAlignment(Pos.BOTTOM_LEFT);
+        newUserBox.getChildren().add(newUserbtn);
+        loginPane.add(newUserBox, 0, 4);
+
+        newUserbtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                primaryStage.setScene(addUserScene);
+            }
+        });
+
+        // New User
+        GridPane newUserPane = new GridPane();
+        newUserPane.setAlignment(Pos.CENTER);
+        newUserPane.setHgap(10);
+        newUserPane.setVgap(10);
+        newUserPane.setPadding(new Insets(25, 25, 25, 25));
+
+        Text newUserTitle = new Text("Lisää uusi käyttäjä");
+        newUserTitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+        newUserPane.add(newUserTitle, 0, 0, 2, 1);
+
+        Label newUserName = new Label("Anna käyttäjätunnus:");
+        newUserPane.add(newUserName, 0, 1);
+
+        TextField newUserTextField = new TextField();
+        newUserPane.add(newUserTextField, 1, 1);
+
+        Label pw1 = new Label("Salasana:");
+        newUserPane.add(pw1, 0, 2);
+
+        PasswordField pw1Box = new PasswordField();
+        pw1Box.setPromptText("Salasana");
+        newUserPane.add(pw1Box, 1, 2);
+
+        Label pw2 = new Label("Salasana uudestaan:");
+        newUserPane.add(pw2, 0, 3);
+
+        PasswordField pw2Box = new PasswordField();
+        pw2Box.setPromptText("Salasana uudestaan");
+        newUserPane.add(pw2Box, 1, 3);
+
+        Button addUser = new Button("Luo käyttäjä");
+        HBox addUserButton = new HBox(10);
+        addUserButton.setAlignment(Pos.BOTTOM_RIGHT);
+        addUserButton.getChildren().add(addUser);
+        newUserPane.add(addUserButton, 1, 4);
+
+        final Text addUserText = new Text();
+        newUserPane.add(addUserText, 1, 6);
+
+        addUser.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent e) {
+                if (pw1Box.getText().equals(pw2Box.getText())) {
+                    service.createUser(newUserTextField.getText(), pw1Box.getText());
+                    primaryStage.setScene(login);
+                } else {
+                    addUserText.setFill(Color.FIREBRICK);
+                    addUserText.setText("Salasanat eivät vastaa toisiaan.");
+                    pw2Box.clear();
+                }
+            }
+        });
+
+        addUserScene = new Scene(newUserPane, 300, 275);
+
+        login = new Scene(loginPane, 300, 275);
+
         primaryStage.setTitle("Kieltenharjoitteluohjelma");
-        primaryStage.setScene(main);
+        primaryStage.setScene(login);
         primaryStage.show();
 
+    }
+
+    public Button exitButton() {
+        Button exit = new Button("Poistu");
+        exit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Platform.exit();
+            }
+        });
+        return exit;
     }
 
     public static void main(String[] args) {
