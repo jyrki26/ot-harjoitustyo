@@ -9,10 +9,10 @@ Sovellukseen tulee aluksi ainoastaan yksi käyttäjäryhmä, tavalliset käyttä
 ## Suunnitellut toiminnallisuudet
 
 #### Ennen kirjautumista
-* Käyttäjä voi luoda järjestelmään käyttäjätunnuksen
+* Käyttäjä voi luoda järjestelmään käyttäjätunnuksen **Tehty** (viikko 5)
   * Käyttäjätunnuksen tulee olla uniikki ja vähintään kolme merkkiä pitkä
-  * Käyttäjätunnukseen liittyy salasana
-* Käyttäjä pääsee kirjautumaan järjestelmään syöttämällä käyttäjätunnuksen ja salasanan
+  * Käyttäjätunnukseen liittyy salasana **Tehty** (viikko 5)
+* Käyttäjä pääsee kirjautumaan järjestelmään syöttämällä käyttäjätunnuksen ja salasanan **Tehty** (viikko 5)
 
 #### Kirjautumisen jälkeen
 * Käyttäjä siirtyy näkymään, jossa voi lisätä sanoja haluamalleen kielelle antamalla sanan ja käännöksen molemmilla kielillä **Tehty**
