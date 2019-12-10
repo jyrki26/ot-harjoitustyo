@@ -11,7 +11,11 @@ Päivä | Aika | Mitä tein
 1.12.2019 | 5 | Graafisen käyttöliittymän ja sovelluslogiikan tekoa.
 2.12.2019 | 6 | Graafisen käyttöliittymän ja sovelluslogiikan tekoa.
 3.12.2019 | 6 | Sovelluslogiikan tekoa ja dokumentaation päivittämistä.
+4.12.2019 | 3 | Sovelluslogiikan tekoa.
+6.12.2019 | 2 | Sovelluslogiikan tekoa.
+9.12.2019 | 6 | Graafisen käyttöliittymän tekoa ja bugien korjausta.
+10.12.2019 | 6 | Bugien korjausta ja dokumentaation päivittämistä.
 
 
 <br/>
-Yhteensä : 49 h
+Yhteensä : 66 h

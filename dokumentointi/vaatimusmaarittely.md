@@ -7,18 +7,19 @@ Sovelluksen  tarkoituksena on auttaa käyttäjää vieraan kielen sanojen opiske
 Sovellukseen tulee aluksi ainoastaan yksi käyttäjäryhmä, tavalliset käyttäjät. Myöhemmin mahdollisesti lisätään ylläpitokäyttäjät, joilla on mahdollisuus muokata tallennettuja sanalistoja laajemmin.
 
 ## Suunnitellut toiminnallisuudet
+* Sovellus toimii graafisessa käyttöliittymässä. **Tehty** (Viikko 6)
 
 #### Ennen kirjautumista
-* Käyttäjä voi luoda järjestelmään käyttäjätunnuksen **Tehty** (viikko 5)
+* Käyttäjä voi luoda järjestelmään käyttäjätunnuksen **Tehty**
   * Käyttäjätunnuksen tulee olla uniikki ja vähintään kolme merkkiä pitkä
-  * Käyttäjätunnukseen liittyy salasana **Tehty** (viikko 5)
-* Käyttäjä pääsee kirjautumaan järjestelmään syöttämällä käyttäjätunnuksen ja salasanan **Tehty** (viikko 5)
+  * Käyttäjätunnukseen liittyy salasana **Tehty** 
+* Käyttäjä pääsee kirjautumaan järjestelmään syöttämällä käyttäjätunnuksen ja salasanan **Tehty**
 
 #### Kirjautumisen jälkeen
 * Käyttäjä siirtyy näkymään, jossa voi lisätä sanoja haluamalleen kielelle antamalla sanan ja käännöksen molemmilla kielillä **Tehty**
   * Kielen voi valita näkymässä olevista napeista **Tehty**
 * Näkymässä on painike, josta pääsee harjoittelu-tilaan **Tehty**
-* Harjoittelu-tilassa ohjelma kysyy sanoja joko antamalla suomenkielisen sanan, jolle pitää antaa vastine vieraalla kielellä tai päinvastoin **Tehty osittain**
+* Harjoittelu-tilassa ohjelma kysyy sanoja joko antamalla suomenkielisen sanan, jolle pitää antaa vastine vieraalla kielellä tai päinvastoin **Tehty** (Viikko 6)
   * Käyttäjä voi valita haluamansa suunnan painamalla näkymässä olevaa painiketta **Tehty**
 * Ohjelma tilastoi oikeat ja väärät vastaukset sanakohtaisesti.
 * Ohjelma arpoo kysyttävät sanat painottaen vähemmän kysyttyjä tai sanoja, joihin on vastattu useasti väärin.

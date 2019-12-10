@@ -11,6 +11,8 @@ Sovelluksen tarkoituksena on auttaa käyttäjää vieraan kielen sanojen opiskel
 ## Releaset
 #### Viikko 5
 [Viikko 5](https://github.com/jyrki26/ot-harjoitustyo/releases/tag/viikko5)
+#### Viikko 6
+[Viikko 6](https://github.com/jyrki26/ot-harjoitustyo/releases/tag/viikko5)
 
 ## Komentorivitoiminnot
 

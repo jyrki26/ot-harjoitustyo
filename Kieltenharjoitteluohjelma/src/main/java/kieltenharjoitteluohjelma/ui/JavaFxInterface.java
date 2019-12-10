@@ -22,7 +22,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-import kieltenharjoitteluohjelma.domain.Kieltenharjoittelu;
 import kieltenharjoitteluohjelma.domain.KieltenharjoitteluService;
 import kieltenharjoitteluohjelma.dao.UserDao;
 import kieltenharjoitteluohjelma.dao.FileUserDao;
@@ -30,7 +29,6 @@ import kieltenharjoitteluohjelma.domain.User;
 
 public class JavaFxInterface extends Application {
 
-    Kieltenharjoittelu domain;
     KieltenharjoitteluService service;
     private Scene main;
     private Scene languageMain;
@@ -38,17 +36,16 @@ public class JavaFxInterface extends Application {
     private Scene addWord;
     private Scene login;
     private Scene addUserScene;
-    private int language;
-    private String translatableWord;
+    private String word;
 
     @Override
     public void init() throws Exception {
-        domain = new Kieltenharjoittelu();
         FileUserDao userDao = new FileUserDao();
         service = new KieltenharjoitteluService(userDao);
-        language = 0;
+        word = "";
     }
 
+    @Override
     public void start(Stage primaryStage) {
         //main window
 
@@ -70,15 +67,17 @@ public class JavaFxInterface extends Application {
         });
 
         TreeMap<Integer, String> languages = new TreeMap<>();
-        languages = domain.getLanguages();
+        languages = service.getLanguages();
         HBox languageButtons = new HBox();
 
         for (Integer lang : languages.keySet()) {
             Button button = new Button(languages.get(lang));
+            button.setUserData(lang);
             button.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    language = lang;
+                    int i = (Integer) button.getUserData();
+                    service.setLanguage(i);
                     primaryStage.setScene(languageMain);
                 }
             });
@@ -100,6 +99,7 @@ public class JavaFxInterface extends Application {
         Button addWords = new Button("Lisää sanoja");
         Button practiseFinFor = new Button("Harjoittele suomesta vieraaseen kieleen");
         Button practiseForFin = new Button("Harjoittelu vieraasta kielestä suomeen");
+        Text wordToTranslate = new Text();
 
         addWords.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -108,11 +108,11 @@ public class JavaFxInterface extends Application {
             }
         });
 
-        practiseFinFor.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                primaryStage.setScene(practise);
-            }
+        practiseFinFor.setOnAction((event) -> {
+            service.practiseFinForFirst();
+            word = service.getWordToTranslate();
+            wordToTranslate.setText("Käännä seuraava sana: " + word);
+            primaryStage.setScene(practise);
         });
 
         languagePane.add(exit, 4, 1);
@@ -143,7 +143,7 @@ public class JavaFxInterface extends Application {
         addWordLayout.add(add, 1, 3);
 
         add.setOnAction((event) -> {
-            domain.addWord(language, finnish.getText(), foreign.getText());
+            service.addWord(finnish.getText(), foreign.getText());
             finnish.clear();
             foreign.clear();
         });
@@ -157,9 +157,6 @@ public class JavaFxInterface extends Application {
         // Practise
         BorderPane practisePane = new BorderPane();
 
-        translatableWord = domain.practiseFinForFirst(language);
-        Label wordToTranslate = new Label("Käännä seuraava sana: " + translatableWord);
-
         Label translationLabel = new Label("Käännös");
         TextField translation = new TextField();
         Button answer = new Button("Vastaa");
@@ -172,22 +169,22 @@ public class JavaFxInterface extends Application {
         newWordBox.add(responseText, 1, 1, 3, 1);
         newWordBox.add(newWord, 1, 4);
 
-        answer.setOnAction((event) -> {
-            responseText.setText(domain.practiseFinForSec(language, translatableWord, answer.getText()));
+        practisePane.setTop(wordToTranslate);
+        practisePane.setRight(exit);
+        practisePane.setCenter(translationBox);
+
+        answer.setOnAction((ActionEvent event) -> {
+            responseText.setText(service.practiseFinForSec(translation.getText()));
             practisePane.setBottom(newWordBox);
         });
 
         newWord.setOnAction((event) -> {
-            translatableWord = domain.practiseFinForFirst(language);
-            String word2 = translatableWord;
+            service.practiseFinForFirst();
+            word = service.getWordToTranslate();
             translation.clear();
-            wordToTranslate.setText("Käännä seuraava sana: " + word2);
+            wordToTranslate.setText("Käännä seuraava sana: " + word);
             practisePane.setBottom(null);
         });
-
-        practisePane.setTop(wordToTranslate);
-        practisePane.setRight(exit);
-        practisePane.setCenter(translationBox);
 
         practise = new Scene(practisePane, 600, 400);
 
