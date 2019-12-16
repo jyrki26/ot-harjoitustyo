@@ -1,6 +1,9 @@
 package kieltenharjoitteluohjelma.ui;
 
+import java.sql.SQLException;
 import java.util.TreeMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -21,6 +24,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import kieltenharjoitteluohjelma.dao.FileLanguageDao;
 
 import kieltenharjoitteluohjelma.domain.KieltenharjoitteluService;
 import kieltenharjoitteluohjelma.dao.UserDao;
@@ -41,7 +45,8 @@ public class JavaFxInterface extends Application {
     @Override
     public void init() throws Exception {
         FileUserDao userDao = new FileUserDao();
-        service = new KieltenharjoitteluService(userDao);
+        FileLanguageDao languageDao = new FileLanguageDao();
+        service = new KieltenharjoitteluService(userDao, languageDao);
         word = "";
     }
 
@@ -78,6 +83,11 @@ public class JavaFxInterface extends Application {
                 public void handle(ActionEvent event) {
                     int i = (Integer) button.getUserData();
                     service.setLanguage(i);
+                    try {
+                        service.WordsFromDatabase();
+                    } catch (SQLException ex) {
+                        System.out.println("Ei toimi " +ex);
+                    }
                     primaryStage.setScene(languageMain);
                 }
             });

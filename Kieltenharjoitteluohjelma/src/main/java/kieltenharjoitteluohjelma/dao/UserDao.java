@@ -1,14 +1,15 @@
 package kieltenharjoitteluohjelma.dao;
 
-import java.util.List;
 import kieltenharjoitteluohjelma.domain.User;
+import java.util.*;
+import java.sql.*;
 
-public interface UserDao {
+public interface UserDao<Asiakas, Integer> {
 
-    List<User> getAll();
+    User findByUsername(String username) throws SQLException;
 
-    Boolean findByUsername(String username, String password);
-
-    User create(User user) throws Exception;
+    void create(User user) throws SQLException;
+    
+    Boolean checkPassword(String username, String password);
 
 }

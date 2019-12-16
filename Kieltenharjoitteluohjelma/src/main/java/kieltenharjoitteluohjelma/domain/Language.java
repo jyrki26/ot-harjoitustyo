@@ -8,20 +8,13 @@ import java.util.TreeMap;
 
 public class Language {
 
-    public String name;
     public HashMap<String, String> finFor;
     public HashMap<String, String> forFin;
 
-    public Language(String name) {
-        this.name = name;
+    public Language() {
         this.finFor = new HashMap<>();
-        finFor.put("kissa", "cat");
-        finFor.put("koira", "dog");
-        finFor.put("lintu", "bird");
         this.forFin = new HashMap<>();
-        forFin.put("cat", "kissa");
-        forFin.put("dog", "koira");
-        forFin.put("bird", "lintu");
+        
     }
 
     public HashMap<String, String> getFinFor() {
@@ -30,6 +23,14 @@ public class Language {
 
     public HashMap<String, String> getForFin() {
         return forFin;
+    }
+
+    public void setFinFor(HashMap<String, String> finFor) {
+        this.finFor = finFor;
+    }
+
+    public void setForFin(HashMap<String, String> forFin) {
+        this.forFin = forFin;
     }
 
     public void addWord(String fin, String foreign) {
