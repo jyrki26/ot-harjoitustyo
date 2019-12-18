@@ -16,6 +16,7 @@ public class KieltenharjoitteluService {
     private Language language;
     private int languageInt;
     private String wordToTranslate;
+    private User loggedIn;
 
     public KieltenharjoitteluService(UserDao userDao, LanguageDao languageDao) {
         this.userDao = userDao;
@@ -33,29 +34,38 @@ public class KieltenharjoitteluService {
         return languages;
     }
 
-    public boolean createUser(String name, String password) {
+    public Boolean createUser(String name, String password) {
         try {
             if (userDao.findByUsername(name) != null) {
                 return false;
             }
         } catch (SQLException ex) {
-            System.out.println("Tietokantayhteydessä on ongelma. Yritä myöhemmin uudestaan.");
+            return null;
         }
         User user = new User(name, password);
         try {
             userDao.create(user);
-        } catch (Exception e) {
-            return false;
+        } catch (SQLException ex) {
+            return null;
         }
 
         return true;
     }
 
-    public Boolean passwordCorrect(String username, String password) {
+    public Boolean passwordCorrect(String username, String password) throws SQLException {
         if (userDao.checkPassword(username, password)) {
+            loggedIn = userDao.findByUsername(username);
             return true;
         }
         return false;
+    }
+    
+    public User getLoggedIn(){
+        return loggedIn;
+    }
+    
+    public void logout(){
+        loggedIn = null;
     }
 
     public Boolean addWord(String fin, String foreign) {
@@ -76,13 +86,18 @@ public class KieltenharjoitteluService {
         wordToTranslate = language.randomFin();
     }
 
-    public String practiseFinForSec(String answer) {
+    public Boolean practiseFinForSec(String answer) {
         String correctAnswer = language.translationFinFor(wordToTranslate);
         if (answer.equals(correctAnswer)) {
-            return "Oikein!";
+            return true;
         }
 
-        return "Väärin. Vastasit" + answer + ". Oikea vastaus on: " + correctAnswer;
+        return false;
+    }
+    
+    public String getCorrectAnswer(){
+        String correctAnswer = language.translationFinFor(wordToTranslate);
+        return correctAnswer;
     }
 
     public void setLanguage(int lang) {
