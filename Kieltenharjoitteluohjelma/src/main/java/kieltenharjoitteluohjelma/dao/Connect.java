@@ -4,8 +4,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * Luokka luo yhteyden SQL-tietokantaan.
+ */
 public class Connect {
 
+    /**
+     * Metodi palauttaa yhteyden SQL-tietokantaan.
+     * 
+     * @return Palauttaa yhteyden Connect-muodossa.
+     */
+    
     public Connection connect() {
         Connection conn = null;
         try {
@@ -13,14 +22,10 @@ public class Connect {
 
             conn = DriverManager.getConnection(url);
 
-            System.out.println("Connection to SQLite has been established.");
-
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
         }
-        
+
         return conn;
     }
 
 }
-

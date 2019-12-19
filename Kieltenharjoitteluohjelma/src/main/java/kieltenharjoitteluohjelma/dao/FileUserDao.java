@@ -8,15 +8,25 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * UserDao-rajapinnan toteuttava luokka.
+ */
 public class FileUserDao implements UserDao {
-    
+
     private Connect connect;
 
     public FileUserDao() {
         connect = new Connect();
     }
-    
 
+    /**
+     * Käyttäjän tietokannasta hakeva ja palauttava metodi.
+     *
+     * @param username Käyttäjänimi, jonka perusteella käyttäjä haetaan.
+     *
+     * @return palauttaa User-olion. Jos tietokanta on tyhjä tai käyttäjää ei
+     * löydy palauttaa null
+     */
     @Override
     public User findByUsername(String username) throws SQLException {
         Connection connection = connect.connect();
@@ -39,6 +49,15 @@ public class FileUserDao implements UserDao {
         return user;
     }
 
+    /**
+     * Käyttäjän salasanan tarkastava metodi.
+     *
+     * @param username Käyttäjän syötteenä antama käyttäjänimi
+     * @param password Käyttäjän syötteenä antama salasana
+     *
+     * return false, jos käyttäjänimi ja salasana eivät vastaa toisiaan ja true,
+     * jos ne vastaavat toisiaan
+     */
     @Override
     public Boolean checkPassword(String username, String password) {
         try {
@@ -52,12 +71,18 @@ public class FileUserDao implements UserDao {
                 return true;
             }
         } catch (SQLException ex) {
-            System.out.println("Tietokantayhteydessä on ongelma. Yritä uudestaan myöhemmin." +ex);;
+            return null;
         }
 
         return false;
     }
 
+    /**
+     * Uuden käyttäjän tietokantaan lisäävä metodi
+     * 
+     * @param user Käyttäjä-olio, jonka tiedot lisätään tietokantaan.
+     */
+    
     @Override
     public void create(User user) throws SQLException {
         Connection connection = connect.connect();

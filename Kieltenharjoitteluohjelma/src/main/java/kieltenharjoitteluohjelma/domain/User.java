@@ -1,5 +1,8 @@
 package kieltenharjoitteluohjelma.domain;
 
+/**
+ * Käyttäjää kuvaava luokka.
+ */
 public class User {
 
     private String name;

@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Border;
@@ -40,6 +41,7 @@ import kieltenharjoitteluohjelma.dao.FileLanguageDao;
 import kieltenharjoitteluohjelma.domain.KieltenharjoitteluService;
 import kieltenharjoitteluohjelma.dao.UserDao;
 import kieltenharjoitteluohjelma.dao.FileUserDao;
+import kieltenharjoitteluohjelma.dao.LanguageDao;
 import kieltenharjoitteluohjelma.domain.User;
 
 public class JavaFxInterface extends Application {
@@ -51,6 +53,7 @@ public class JavaFxInterface extends Application {
     private Scene addWord;
     private Scene login;
     private Scene addUserScene;
+
     private String word;
     private Text loginText = new Text();
     private Text wordToTranslate = new Text();
@@ -121,7 +124,7 @@ public class JavaFxInterface extends Application {
                         pwBox.clear();
                     }
                 } catch (SQLException ex) {
-
+                    loginText.setText("Tietokantayhteydessä on virhe. Yritä myöhemmin uudestaan.");
                 }
             }
         });
@@ -174,13 +177,13 @@ public class JavaFxInterface extends Application {
         addUserButton.setAlignment(Pos.BOTTOM_RIGHT);
         addUserButton.getChildren().add(addUser);
         newUserPane.add(addUserButton, 1, 4);
-        
+
         Button returnButton = new Button("Palaa kirjautumiseen");
         newUserPane.add(returnButton, 0, 4);
-        
+
         returnButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent e) {           
+            public void handle(ActionEvent e) {
                 getStage().setScene(loginScene());
             }
         });
@@ -189,8 +192,11 @@ public class JavaFxInterface extends Application {
 
         addUser.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent e) {           
-                if (!pw1Box.getText().equals(pw2Box.getText())) {
+            public void handle(ActionEvent e) {
+                if (newUserTextField.getText().length() < 2 || pw1Box.getText().length() < 2) {
+                    addUserText.setFill(Color.FIREBRICK);
+                    addUserText.setText("Käyttäjätunnuksen ja salasanan tulee olla vähintään kahden merkin mittaisia.");
+                } else if (!pw1Box.getText().equals(pw2Box.getText())) {
                     addUserText.setText("Salasanat eivät vastaa toisiaan.");
                     pw2Box.clear();
                 } else if (service.createUser(newUserTextField.getText(), pw1Box.getText())) {
@@ -275,6 +281,13 @@ public class JavaFxInterface extends Application {
             getStage().setScene(practiseScene());
         });
 
+        practiseForFin.setOnAction((event) -> {
+            service.practiseForFinFirst();
+            word = service.getWordToTranslate();
+            wordToTranslate.setText("Käännä seuraava sana: " + word);
+            getStage().setScene(practiseScene());
+        });
+
         languagePane.add(languageText, 0, 2, 4, 2);
         languagePane.add(addWords, 0, 4);
         languagePane.add(practiseFinFor, 0, 5);
@@ -339,8 +352,10 @@ public class JavaFxInterface extends Application {
         practisePane.add(wordToTranslate, 0, 0, 2, 1);
         practisePane.add(answerBox, 0, 2);
 
+        answer.setDefaultButton(true);
+
         answer.setOnAction((ActionEvent event) -> {
-            if (service.practiseFinForSec(translation.getText())) {
+            if (service.practiseSecond(translation.getText())) {
                 responseText.setText("Oikein!");
                 practisePane.setBackground(new Background(new BackgroundFill(Color.AQUAMARINE, CornerRadii.EMPTY, Insets.EMPTY)));
             } else {
@@ -351,16 +366,24 @@ public class JavaFxInterface extends Application {
             practisePane.add(newWord, 0, 4);
             translation.clear();
             answer.setDisable(true);
+            answer.setDefaultButton(false);
+            newWord.setDefaultButton(true);
         });
 
         newWord.setOnAction((event) -> {
             practisePane.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE, CornerRadii.EMPTY, Insets.EMPTY)));
-            service.practiseFinForFirst();
+            if (service.getDirection() == 1) {
+                service.practiseFinForFirst();
+            } else {
+                service.practiseForFinFirst();
+            }
             word = service.getWordToTranslate();
             wordToTranslate.setText("Käännä seuraava sana: " + word);
             practisePane.getChildren().remove(responseText);
             practisePane.getChildren().remove(newWord);
             answer.setDisable(false);
+            newWord.setDefaultButton(false);
+            answer.setDefaultButton(true);
         });
 
         bp.setCenter(practisePane);
@@ -441,10 +464,7 @@ public class JavaFxInterface extends Application {
         practiseWords.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                service.practiseFinForFirst();
-                word = service.getWordToTranslate();
-                wordToTranslate.setText("Käännä seuraava sana: " + word);
-                getStage().setScene(practiseScene());
+                getStage().setScene(languageMainScene());
             }
         });
 

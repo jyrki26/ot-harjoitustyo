@@ -4,7 +4,7 @@ import kieltenharjoitteluohjelma.domain.User;
 import java.util.*;
 import java.sql.*;
 
-public interface UserDao<Asiakas, Integer> {
+public interface UserDao {
 
     User findByUsername(String username) throws SQLException;
 

@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.*;
 import java.sql.*;
 
+/**
+ * LanguageDao-rajapinnan toteuttava luokka.
+ */
 public class FileLanguageDao implements LanguageDao {
 
     private Connect connect;
@@ -12,6 +15,16 @@ public class FileLanguageDao implements LanguageDao {
         connect = new Connect();
     }
 
+    /**
+     * Harjoiteltavat sanat SQL-tiedostosta hakeva ja ne pyynnön esittävälle
+     * metodille palauttava metodi.
+     *
+     * @param language Metodille annetaan parametrina kieltä kuvaava
+     * kokonaisluku. (1 = englanti ja 2 = ruotsi)
+     *
+     * @return Metodi palauttaa sanat HashMappina, jossa key on suomenkielinen
+     * sana ja value vieraskielinen sana.
+     */
     @Override
     public HashMap<String, String> words(Integer language) throws SQLException {
         Connection connection = connect.connect();
@@ -42,6 +55,16 @@ public class FileLanguageDao implements LanguageDao {
 
     }
 
+    /**
+     * Metodin avulla lisätään uusi sanapari tietokantaan.
+     * 
+     * @param language Metodille annetaan parametrina kieltä kuvaava
+     * kokonaisluku. (1 = englanti ja 2 = ruotsi)
+     * @param finnish Suomenkielinen sana
+     * @param foreign Vieraskielinen sana
+     * 
+     */
+    
     public boolean addWord(Integer language, String finnish, String foreign) throws SQLException {
         Connection connection = connect.connect();
         String lang = "Swedish";
