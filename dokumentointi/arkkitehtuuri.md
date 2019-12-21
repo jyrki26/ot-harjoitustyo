@@ -17,7 +17,11 @@ Toiminnallisista kokonaisuuksista vastaa luokka Kieltenharjoitteluservice, joka 
 * public void practiseFinForFirst()
 * public String getWordToTranslate()
 
-Kieltenharjoitteluservice pääsee käsiksi sanoihin ja käyttäjiin. Tämä  tapahtuu rajapintojen LanguageDao ja UserDao kautta, joiden kautta SQL-tiedostosta database luetaan esimerkiksi harjoiteltavat sanat ja käyttäjätiedot. Lisäksi tiedostoon voidaan tallentaa rajapintojen kautta vastaavia tietoja.
+Kieltenharjoitteluservice pääsee käsiksi sanoihin ja käyttäjiin. Tämä tapahtuu rajapintojen LanguageDao ja UserDao kautta, joiden kautta SQL-tiedostosta database luetaan esimerkiksi harjoiteltavat sanat ja käyttäjätiedot. Lisäksi tiedostoon voidaan tallentaa rajapintojen kautta vastaavia tietoja. Yhteys tietokantaan otetaan rajapinnan DataBaseconnection kautta. Rajapinnan toteuttaa luokka Connect.
+
+KieltenharjoitteluServicen ja ohjelman muiden osien suhdetta kuvaava luokka/pakkauskaavio:
+
+![package_diagram](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/pakkauskaavio.png)
 
 ## Tietojen pysyväistallennus
 
@@ -72,11 +76,15 @@ Sanojen harjoitelussa käännettäessä suomenkielinen sana vieraalle kielelle o
 
 ![Sekvenssikaavio_practise](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/sekvenssikaavio_addWord.png)
 
-Käyttäjän painaessa nappia practiseFinFor ohjelma kutsuu sovelluslogiikkaa metodeilla practiseFinForFirst ja getWordToTranslate. Tämän jälkeen sovelluslogiikka kutsuu luokkaa Language metodilla randomFin ja saa vastauksena satunnaisen käännettävän sanan, jonka sovelluslogiikka palauttaa käyttöliittymälle. Seuraavaksi käyttöliittymä siirtyy harjoittelunäkemään. Käyttäjän kirjoittaessa vastauksen käännettävälle sanalle käyttöliittymä kutsuu sovellus sovelluslogiikkaa metodilla practiseSecond parametrilla käyttäjän vastaus. Seuraavaksi käyttöliittymä kutsuu Language-luokkaa metodilla translationFinFor parametrilla käännettävä sana ja Language palauttaa käännöksen. Mikäli käännös vastaa käyttäjän vastausta vastaa sovelluslogiikka True ja käyttöliittymä kertoo vastauksen olleen oikein.
+Käyttäjän painaessa nappia practiseFinFor ohjelma kutsuu sovelluslogiikkaa metodeilla practiseFinForFirst ja getWordToTranslate. Tämän jälkeen sovelluslogiikka kutsuu luokkaa Language metodilla randomFin ja saa vastauksena satunnaisen käännettävän sanan, jonka sovelluslogiikka palauttaa käyttöliittymälle. Seuraavaksi käyttöliittymä siirtyy harjoittelunäkemään. Käyttäjän kirjoittaessa vastauksen käännettävälle sanalle käyttöliittymä kutsuu sovelluslogiikkaa metodilla practiseSecond parametrilla käyttäjän vastaus. Seuraavaksi käyttöliittymä kutsuu Language-luokkaa metodilla translationFinFor parametrilla käännettävä sana ja Language palauttaa käännöksen. Mikäli käännös vastaa käyttäjän vastausta vastaa sovelluslogiikka True ja käyttöliittymä kertoo vastauksen olleen oikein.
 
 #### Muut toiminnallisuudet
 Muut toiminnallisuudet toimivat vastaavalla logiikalla. Käyttöliittymä kutsuu sovelluslogiikkaa, joka kutsuu joko luokkaa Language, johon on ladattu sanalista valmiiksi, kun ohjelmassa valitaan harjoiteltava kieli tai vaihtoehtoisesti ohjelma kutsuu LanguageDao- ja UserDao- luokkia, joiden avulla haetaan tietokannasta tarvittavat tiedot. Vaihtoehtoisesti luokkien avulla tallennetaan tietokantaan tietoa.
 
-### Alustava luokkakaavio
-![Luokkakaavio](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/class_diagram.jpg)
+## Ohjelman rakenteelliset heikkoudet
 
+#### Käyttöliittymä
+Käyttöliittymässä on jonkin verran toisteista koodia. Vaikka käyttöliittymän eri näkymät on erotettu omiksi metodeikseen ja käyttöliittymän pohja haetaan omasta metodistaan, on metodien välillä osittain toisteista koodia. Tämä voitaisiin ratkaista erottamalla tämä toisteinen koodi omaksi metodikseen, joka haettaisiin jokaiseen käyttöliittymän toteuttavaan metodiin tarvittaessa.
+
+#### Käyttäjän tekemät virheet
+Ohjelmassa ei ole pystytty huomioimaan kaikkia mahdollisia käyttäjän tekemiä virheitä, jotka voivat aiheuttaa ohjelmassa virhetilanteen esimerksi yhteydessä tietokantaan. Tämä voitaisiin ratkaista laajemmalla testaamisella ja lisäämällä testauksen perusteella käyttöliittymään erilaisia validaatioita käyttäjän syötteeseen.
