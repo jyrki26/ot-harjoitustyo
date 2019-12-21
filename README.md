@@ -10,15 +10,16 @@ Sovelluksen tarkoituksena on auttaa käyttäjää vieraan kielen sanojen opiskel
 [Testausdokumentti](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/testausdokumentti.md)
 
 ## Releaset
-[Viikko 5](https://github.com/jyrki26/ot-harjoitustyo/releases/tag/viikko5)
-[Viikko 6](https://github.com/jyrki26/ot-harjoitustyo/releases/tag/viikko6)
+[Viikko 5](https://github.com/jyrki26/ot-harjoitustyo/releases/tag/viikko5) <br/>
+[Viikko 6](https://github.com/jyrki26/ot-harjoitustyo/releases/tag/viikko6) <br/>
+[Loppupalautus](https://github.com/jyrki26/ot-harjoitustyo/releases/tag/Loppupalautus)
 
 
 ## Komentorivitoiminnot
 
 #### Ohjelman käynnistäminen
 
-Ohjelman voi käynnistää antamlla terminaalissa kansiossa johon viikon 5 releasesta on ladannut kieltenharjoittelu.jar -tiedoston komennon:
+Ohjelman voi käynnistää antamlla terminaalissa kansiossa, johon on ladannut Loppupalautus-releasesta kieltenharjoittelu.jar -tiedoston, komennon:
 
 ```console
 java -jar kieltenharjoittelu.jar
@@ -39,7 +40,7 @@ mvn test
 
 Testikattavuusraportti luodaan komennolla
 ```console
-mvn jacoco:report
+mvn test jacoco:report
 ```
 Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto *target/site/jacoco/index.html*
 

@@ -22,6 +22,7 @@ Päivä | Aika | Mitä tein
 18.12.2019 | 2 | Virheviestien lisäämistä.
 19.12.2019 | 5 | Yksikkötestauksen tekoa.
 20.12.2019 | 3 | Käyttäjätilastoinnin suunnittelua.
+21.12.2019 | 11 | Dokumentaation päivittämistä ja virheiden korjausta.
 
 <br/>
-Yhteensä : 103 h
+Yhteensä : 114 h

@@ -2,6 +2,8 @@ package dao;
 
 import java.sql.SQLException;
 import java.util.HashMap;
+import kieltenharjoitteluohjelma.dao.Connect;
+import kieltenharjoitteluohjelma.dao.DatabaseConnection;
 import kieltenharjoitteluohjelma.dao.FileLanguageDao;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -10,7 +12,7 @@ import org.junit.Before;
 public class FileLanguageDaoTest {
 
     FileLanguageDao languageDao;
-    TestConnection connect;
+    DatabaseConnection connect;
 
     @Before
     public void setUp() {

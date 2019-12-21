@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import kieltenharjoitteluohjelma.dao.DatabaseConnection;
 import kieltenharjoitteluohjelma.dao.FileUserDao;
 import kieltenharjoitteluohjelma.domain.User;
 import org.junit.After;
@@ -13,7 +14,7 @@ import org.junit.Before;
 public class FileUserDaoTest {
 
     FileUserDao userDao;
-    TestConnection connect;
+    DatabaseConnection connect;
 
     @Before
     public void setUp() {
