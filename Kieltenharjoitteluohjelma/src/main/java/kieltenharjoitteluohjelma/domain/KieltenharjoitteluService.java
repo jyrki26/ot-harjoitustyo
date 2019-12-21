@@ -209,7 +209,7 @@ public class KieltenharjoitteluService {
      * Language-luokalle.
      *
      */
-    public void WordsFromDatabase() throws SQLException {
+    public void wordsFromDatabase() throws SQLException {
         HashMap<String, String> words = languageDao.words(languageInt);
         language.setFinFor(words);
 

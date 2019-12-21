@@ -9,7 +9,7 @@ public interface UserDao {
     User findByUsername(String username) throws SQLException;
 
     void create(User user) throws SQLException;
-    
+
     Boolean checkPassword(String username, String password);
 
 }

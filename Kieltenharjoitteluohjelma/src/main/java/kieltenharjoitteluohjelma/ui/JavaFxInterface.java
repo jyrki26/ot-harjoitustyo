@@ -198,7 +198,11 @@ public class JavaFxInterface extends Application {
                 if (newUserTextField.getText().length() < 2 || pw1Box.getText().length() < 2) {
                     addUserText.setFill(Color.FIREBRICK);
                     addUserText.setText("Käyttäjätunnuksen ja salasanan tulee olla vähintään kahden merkin mittaisia.");
+                } else if (newUserTextField.getText().length() > 30 || pw1Box.getText().length() > 30) {
+                    addUserText.setFill(Color.FIREBRICK);
+                    addUserText.setText("Käyttäjätunnus ja salasana eivät saa olla 30:n merkin mittaisia.");
                 } else if (!pw1Box.getText().equals(pw2Box.getText())) {
+                    addUserText.setFill(Color.FIREBRICK);
                     addUserText.setText("Salasanat eivät vastaa toisiaan.");
                     pw2Box.clear();
                 } else if (service.createUser(newUserTextField.getText(), pw1Box.getText())) {
@@ -241,7 +245,7 @@ public class JavaFxInterface extends Application {
                     int i = (Integer) button.getUserData();
                     service.setLanguage(i);
                     try {
-                        service.WordsFromDatabase();
+                        service.wordsFromDatabase();
                     } catch (SQLException ex) {
                     }
                     getStage().setScene(languageMainScene());
@@ -307,6 +311,7 @@ public class JavaFxInterface extends Application {
     public Scene addNewWordsScene() {
         BorderPane bp = new BorderPane();
         GridPane addWordPane = layout();
+        Text messageText = new Text();
 
         Text addWordText = new Text("Lisää sana antamalla sana suomeksi ja \nvieraalla kielellä alla oleviin kenttiin.");
         addWordText.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
@@ -322,11 +327,21 @@ public class JavaFxInterface extends Application {
         addWordPane.add(wordFor, 0, 3);
         addWordPane.add(foreign, 1, 3);
         addWordPane.add(add, 0, 4);
+        addWordPane.add(messageText, 0, 6, 2, 2);
 
         add.setOnAction((event) -> {
-            service.addWord(finnish.getText(), foreign.getText());
-            finnish.clear();
-            foreign.clear();
+            if (finnish.getText().length() > 50 || foreign.getText().length() > 50) {
+                messageText.setFill(Color.FIREBRICK);
+                messageText.setText("Sanat eivät saa olla yli 50:n merkin mittaisia.");
+            } else if (service.addWord(finnish.getText(), foreign.getText())) {
+                messageText.setFill(Color.GREEN);
+                messageText.setText("Sanan lisääminen onnistui.");
+                finnish.clear();
+                foreign.clear();
+            } else {
+                messageText.setFill(Color.FIREBRICK);
+                messageText.setText("Tietokantayhteydessä on ongelma. Yritä myöhemmin uudestaan.");
+            }
         });
 
         bp.setCenter(addWordPane);

@@ -57,14 +57,13 @@ public class FileLanguageDao implements LanguageDao {
 
     /**
      * Metodin avulla lisätään uusi sanapari tietokantaan.
-     * 
+     *
      * @param language Metodille annetaan parametrina kieltä kuvaava
      * kokonaisluku. (1 = englanti ja 2 = ruotsi)
      * @param finnish Suomenkielinen sana
      * @param foreign Vieraskielinen sana
-     * 
+     *
      */
-    
     public boolean addWord(Integer language, String finnish, String foreign) throws SQLException {
         Connection connection = connect.connect();
         String lang = "Swedish";

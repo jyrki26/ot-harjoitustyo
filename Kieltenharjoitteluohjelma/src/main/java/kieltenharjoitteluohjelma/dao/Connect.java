@@ -11,10 +11,9 @@ public class Connect implements DatabaseConnection {
 
     /**
      * Metodi palauttaa yhteyden SQL-tietokantaan.
-     * 
+     *
      * @return Palauttaa yhteyden Connect-muodossa.
      */
-    
     @Override
     public Connection connect() {
         Connection conn = null;

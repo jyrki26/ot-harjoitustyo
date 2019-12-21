@@ -1,5 +1,4 @@
 /**
- * Käyttöliittymä 
+ * Käyttöliittymä
  */
-
 package kieltenharjoitteluohjelma.ui;
