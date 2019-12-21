@@ -1,7 +1,7 @@
 # Testausdokumentti
 Ohjelmaa on testattu sekä automatisoiduin yksikkö- ja integraatiotestein JUnitilla sekä manuaalisesti tapahtunein järjestelmätason testein.
 
-### Yksikkö ja integraatitestaus
+## Yksikkö ja integraatitestaus
 
 Sovelluslogiikkaa on testattu testaamalla pakkauksen [kieltenharjoitteluohjelma.domain](https://github.com/jyrki26/ot-harjoitustyo/tree/master/Kieltenharjoitteluohjelma/src/main/java/kieltenharjoitteluohjelma/domain) luokkia. 
 Luokkia testaavat testiluokat [KieltenharjoitteluServiceTest.java](https://github.com/jyrki26/ot-harjoitustyo/blob/master/Kieltenharjoitteluohjelma/src/test/java/domain/KieltenharjoitteluServiceTest.java) ja [LanguageTest.java](https://github.com/jyrki26/ot-harjoitustyo/blob/master/Kieltenharjoitteluohjelma/src/test/java/domain/LanguageTest.java). 
@@ -18,5 +18,14 @@ Käyttöliittymäkerrosta lukuunottamatta sovelluksen testauksen rivikattavuus o
 
 ![testraport](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/testraport.png)
 
-###
+## Järjestelmätestaus
+Sovelluksen järjestelmätestaus on suoritettu manuaalisesti.
 
+### Testaaminen
+Sovellusta on testattu yliopiston Cubbli Linux-ympäristössä. 
+
+### Toiminnallisuudet
+Kaikki [määrittelydokumentin](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/vaatimusmaarittely.md) toiminnallisuudet ja käyttöohjeen toiminnallisuudet on pyritty testaamaan sekä virheellisillä että oikeilla syötteillä.
+
+## Sovellukseen jääneet laatuongelmat
+Mikäli database-tietokantatiedosto poistetaan ohjelma ei toimi oikein ja vastaavasti, jos testdatabase-tiedosto poistetaan testit eivät toimi oikein.
