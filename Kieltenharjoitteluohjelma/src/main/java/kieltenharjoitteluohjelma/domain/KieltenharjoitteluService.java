@@ -41,8 +41,6 @@ public class KieltenharjoitteluService {
     public int getDirection() {
         return direction;
     }
-    
-    
 
     /**
      * Metodin avulla luodaan uusi käyttäjä.
@@ -93,8 +91,7 @@ public class KieltenharjoitteluService {
         }
         return false;
     }
-    
-    
+
     public User getLoggedIn() {
         return loggedIn;
     }
@@ -121,12 +118,14 @@ public class KieltenharjoitteluService {
      */
     public Boolean addWord(String fin, String foreign) {
         try {
-            languageDao.addWord(languageInt, fin, foreign);
-            language.addWord(fin, foreign);
+            if (languageDao.addWord(languageInt, fin, foreign)) {
+                language.addWord(fin, foreign);
+                return true;
+            }
         } catch (Exception ex) {
             return false;
         }
-        return true;
+        return false;
     }
 
     /**

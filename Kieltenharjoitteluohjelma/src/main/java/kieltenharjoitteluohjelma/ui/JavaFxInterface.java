@@ -36,6 +36,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import kieltenharjoitteluohjelma.dao.Connect;
 
 import kieltenharjoitteluohjelma.dao.FileLanguageDao;
 import kieltenharjoitteluohjelma.domain.KieltenharjoitteluService;
@@ -61,8 +62,9 @@ public class JavaFxInterface extends Application {
 
     @Override
     public void init() throws Exception {
-        FileUserDao userDao = new FileUserDao();
-        FileLanguageDao languageDao = new FileLanguageDao();
+        Connect connect = new Connect();
+        FileUserDao userDao = new FileUserDao(connect);
+        FileLanguageDao languageDao = new FileLanguageDao(connect);
         service = new KieltenharjoitteluService(userDao, languageDao);
         word = "";
         wordToTranslate.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
@@ -263,11 +265,11 @@ public class JavaFxInterface extends Application {
 
         Text languageText = new Text("Valitse joko sanojen lisääminen tai harjoittelu \nsuomesta vieraalle kielelle tai päinvastoin");
         languageText.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        Button addWords = new Button("Lisää sanoja");
+        Button addWordsBtn = new Button("Lisää sanoja");
         Button practiseFinFor = new Button("Harjoittele suomesta vieraaseen kieleen");
         Button practiseForFin = new Button("Harjoittelu vieraasta kielestä suomeen");
 
-        addWords.setOnAction(new EventHandler<ActionEvent>() {
+        addWordsBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 getStage().setScene(addNewWordsScene());
@@ -289,7 +291,7 @@ public class JavaFxInterface extends Application {
         });
 
         languagePane.add(languageText, 0, 2, 4, 2);
-        languagePane.add(addWords, 0, 4);
+        languagePane.add(addWordsBtn, 0, 4);
         languagePane.add(practiseFinFor, 0, 5);
         languagePane.add(practiseForFin, 0, 6);
 

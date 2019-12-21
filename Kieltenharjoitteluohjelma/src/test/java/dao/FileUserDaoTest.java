@@ -11,10 +11,12 @@ import org.junit.Before;
 public class FileUserDaoTest {
     
     FileUserDao userDao;
+    TestConnection connect;
     
     @Before
     public void setUp() {
-        userDao = new FileUserDao();
+        this.connect = new TestConnection();
+        userDao = new FileUserDao(connect);
     }
     
     @Test

@@ -9,10 +9,10 @@ import java.sql.*;
  */
 public class FileLanguageDao implements LanguageDao {
 
-    private Connect connect;
+    private DatabaseConnection connect;
 
-    public FileLanguageDao() {
-        connect = new Connect();
+    public FileLanguageDao(DatabaseConnection connect) {
+        this.connect = connect;
     }
 
     /**

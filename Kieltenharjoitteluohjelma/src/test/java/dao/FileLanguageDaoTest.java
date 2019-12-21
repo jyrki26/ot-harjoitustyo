@@ -12,10 +12,12 @@ import org.junit.Before;
 public class FileLanguageDaoTest {
     
     FileLanguageDao languageDao;
+    TestConnection connect;
     
     @Before
     public void setUp() {
-        languageDao = new FileLanguageDao();
+        this.connect = new TestConnection();
+        languageDao = new FileLanguageDao(connect);
     }
     
     @Test

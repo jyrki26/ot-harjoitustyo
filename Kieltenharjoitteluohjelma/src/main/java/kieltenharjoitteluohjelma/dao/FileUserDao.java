@@ -7,16 +7,17 @@ import java.util.*;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import kieltenharjoitteluohjelma.domain.Language;
 
 /**
  * UserDao-rajapinnan toteuttava luokka.
  */
 public class FileUserDao implements UserDao {
 
-    private Connect connect;
+    private DatabaseConnection connect;
 
-    public FileUserDao() {
-        connect = new Connect();
+    public FileUserDao(DatabaseConnection connect) {
+        this.connect = connect;
     }
 
     /**
@@ -95,5 +96,27 @@ public class FileUserDao implements UserDao {
         stmt.executeUpdate();
         stmt.close();
         connection.close();
+    }
+    
+    public void checkAnswerData(Integer user, Integer language, Integer direction, String word, Integer correctFalse) throws SQLException{
+        Connection connection = connect.connect();
+        
+        String lang = "Swedish";
+        if(language == 1){
+            lang = "English";
+        }
+        
+        PreparedStatement stmt = connection.prepareStatement("SELECT User_ID, + ? FROM ? WHERE User_ID = ?, ? = ?");
+        stmt.setString(1, lang + "_ID");
+        stmt.setString(2, "Users_" + lang);
+        stmt.setInt(3, user);
+        stmt.setString(4, lang + "_ID");
+        stmt.setInt(5, language);
+
+        ResultSet rs = stmt.executeQuery();
+
+        if (!rs.next()) {
+            return null;
+        }
     }
 }

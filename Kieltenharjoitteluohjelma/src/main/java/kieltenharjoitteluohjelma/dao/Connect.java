@@ -7,7 +7,7 @@ import java.sql.SQLException;
 /**
  * Luokka luo yhteyden SQL-tietokantaan.
  */
-public class Connect {
+public class Connect implements DatabaseConnection {
 
     /**
      * Metodi palauttaa yhteyden SQL-tietokantaan.
@@ -15,6 +15,7 @@ public class Connect {
      * @return Palauttaa yhteyden Connect-muodossa.
      */
     
+    @Override
     public Connection connect() {
         Connection conn = null;
         try {
