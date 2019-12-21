@@ -17,7 +17,7 @@ Toiminnallisista kokonaisuuksista vastaa luokka Kieltenharjoitteluservice, joka 
 * public void practiseFinForFirst()
 * public String getWordToTranslate()
 
-Kieltenharjoitteluservice pääsee käsiksi sanoihin ja käyttäjiin. Tämä tapahtuu rajapintojen LanguageDao ja UserDao kautta, joiden kautta SQL-tiedostosta database luetaan esimerkiksi harjoiteltavat sanat ja käyttäjätiedot. Lisäksi tiedostoon voidaan tallentaa rajapintojen kautta vastaavia tietoja. Yhteys tietokantaan otetaan rajapinnan DataBaseconnection kautta. Rajapinnan toteuttaa luokka Connect.
+Kieltenharjoitteluservice pääsee käsiksi sanoihin ja käyttäjiin. Tämä tapahtuu rajapintojen LanguageDao ja UserDao kautta, joiden kautta SQL-tiedostosta database luetaan esimerkiksi harjoiteltavat sanat ja käyttäjätiedot. Lisäksi tiedostoon voidaan tallentaa rajapintojen kautta vastaavia tietoja. Yhteys tietokantaan otetaan rajapinnan DatabaseConnection kautta. Rajapinnan toteuttaa luokka Connect.
 
 KieltenharjoitteluServicen ja ohjelman muiden osien suhdetta kuvaava luokka/pakkauskaavio:
 

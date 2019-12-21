@@ -1,32 +1,35 @@
 # Vaatimusmäärittely
 
 ## Sovelluksen tarkoitus
-Sovelluksen  tarkoituksena on auttaa käyttäjää vieraan kielen sanojen opiskelemisessa. Sovellukseen voidaan luoda useita käyttäjiä, joista jokainen voi lisätä sanoja omaan opeteltavien sanojen listaansa. Tämän jälkeen käyttäjä voi harjoitella oman listansa sanoja joko suomesta vieraaseen kieleen tai päinvastoin. Sanalistat ja käyttäjätiedot tallennetaan erilliseen SQL-tiedostoon, josta sovellus hakee tiedot.
+Sovelluksen  tarkoituksena on auttaa käyttäjää vieraan kielen sanojen opiskelemisessa. Sovellukseen voidaan luoda useita käyttäjiä, joista jokainen voi lisätä sanoja opeteltavien sanojen listaan. Tämän jälkeen käyttäjä voi harjoitella sanoja joko suomesta vieraaseen kieleen tai päinvastoin. Sanalistat ja käyttäjätiedot tallennetaan erilliseen SQL-tiedostoon, josta sovellus hakee tiedot.
 
 ## Käyttäjät
 Sovellukseen tulee aluksi ainoastaan yksi käyttäjäryhmä, tavalliset käyttäjät. Myöhemmin mahdollisesti lisätään ylläpitokäyttäjät, joilla on mahdollisuus muokata tallennettuja sanalistoja laajemmin.
 
 ## Suunnitellut toiminnallisuudet
-* Sovellus toimii graafisessa käyttöliittymässä. **Tehty** (Viikko 6)
+* Sovellus toimii graafisessa käyttöliittymässä.
 
 #### Ennen kirjautumista
-* Käyttäjä voi luoda järjestelmään käyttäjätunnuksen **Tehty**
-  * Käyttäjätunnuksen tulee olla uniikki ja vähintään kolme merkkiä pitkä
-  * Käyttäjätunnukseen liittyy salasana **Tehty** 
-* Käyttäjä pääsee kirjautumaan järjestelmään syöttämällä käyttäjätunnuksen ja salasanan **Tehty**
+* Käyttäjä voi luoda järjestelmään käyttäjätunnuksen 
+  * Käyttäjätunnuksen tulee olla uniikki ja vähintään kaksi merkkiä pitkä
+  * Käyttäjätunnukseen liittyy salasana
+ * Ohjelma estää virheelliset syötteet.
+* Käyttäjä pääsee kirjautumaan järjestelmään syöttämällä käyttäjätunnuksen ja salasanan
 
 #### Kirjautumisen jälkeen
-* Käyttäjä siirtyy näkymään, jossa voi lisätä sanoja haluamalleen kielelle antamalla sanan ja käännöksen molemmilla kielillä **Tehty**
-  * Kielen voi valita näkymässä olevista napeista **Tehty**
-* Näkymässä on painike, josta pääsee harjoittelu-tilaan **Tehty**
-* Harjoittelu-tilassa ohjelma kysyy sanoja joko antamalla suomenkielisen sanan, jolle pitää antaa vastine vieraalla kielellä tai päinvastoin **Tehty** (Viikko 6)
-  * Käyttäjä voi valita haluamansa suunnan painamalla näkymässä olevaa painiketta **Tehty**
-* Ohjelma tilastoi oikeat ja väärät vastaukset sanakohtaisesti.
-* Ohjelma arpoo kysyttävät sanat painottaen vähemmän kysyttyjä tai sanoja, joihin on vastattu useasti väärin.
-* Käyttäjä voi kirjautua ulos järjestelmästä kummassakin näkymässä.
+* Käyttäjä siirtyy näkymään, jossa valitaan harjoiteltava kieli. Tällä hetkellä harjoiteltavia kieliä ovat englanti ja ruotsi.
+* Tämän jälkeen käyttäjä siirtyy näkymään, jossa voi valita joko harjoittelun sanojen kääntämisestä suomesta vieraaseen kieleen tai päinvastoin tai valita sanojen lisäämisen valitsemalleen kielelle.
+	* Harjoiteltaessa ohjelma kertoo onko vastaus väärin vai oikein ja jos vastaus on väärin, kertoo oikean vastauksen.
+* Ohjelmassa on sivupalkki, josta pääsee joko kielen valintaan, harjoittelun tai sanojen lisäämisen valintaan tai suoraan sanojen lisäämiseen.
+* Ohjelma arpoo kysyttävät sanat.
+* Ohjelma estää virheelliset syötteet.
+* Käyttäjä voi kirjautua ulos järjestelmästä kaikissa näkymissä.
 
 
 ## Jatkokehitysideoita
+* Ohjelma arpoo kysyttävät sanat painottaen vähemmän kysyttyjä tai sanoja, joihin on vastattu useasti väärin.
+* Ohjelma tilastoi oikeat ja väärät vastaukset sanakohtaisesti.
+* Käyttäjäkohtaiset sanalistat.
 * Tilastonäkymän luominen
   * Näkymässä näkyisivät käyttäjän antamia vastauksia koskevat tilastot, kuten annettujen vastausten määrä ja oikeiden vastausten prosenttimäärä.
 * Harjoittelu-tilan laajentaminen

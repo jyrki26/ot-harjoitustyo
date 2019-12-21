@@ -333,6 +333,9 @@ public class JavaFxInterface extends Application {
             if (finnish.getText().length() > 50 || foreign.getText().length() > 50) {
                 messageText.setFill(Color.FIREBRICK);
                 messageText.setText("Sanat eivät saa olla yli 50:n merkin mittaisia.");
+            } else if (finnish.getText().length() < 1 || foreign.getText().length() < 1) {
+                messageText.setFill(Color.FIREBRICK);
+                messageText.setText("Sanojen pitää olla vähintään yhden merkin mittaisia.");
             } else if (service.addWord(finnish.getText(), foreign.getText())) {
                 messageText.setFill(Color.GREEN);
                 messageText.setText("Sanan lisääminen onnistui.");

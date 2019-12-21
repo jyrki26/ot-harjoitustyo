@@ -6,13 +6,13 @@ Sovelluksen tarkoituksena on auttaa käyttäjää vieraan kielen sanojen opiskel
 [Vaatimusmäärittely](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/vaatimusmaarittely.md)<br/>
 [Työaikaseuranta](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/tyoaikakirjanpito.md)<br/>
 [Käyttöhje](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/kayttoohje.md)<br/>
-[Arkkitehtuurikuvaus](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/arkkitehtuuri.md)
+[Arkkitehtuurikuvaus](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/arkkitehtuuri.md)<br/>
+[Testausdokumentti](https://github.com/jyrki26/ot-harjoitustyo/blob/master/dokumentointi/testausdokumentti.md)
 
 ## Releaset
-#### Viikko 5
 [Viikko 5](https://github.com/jyrki26/ot-harjoitustyo/releases/tag/viikko5)
-#### Viikko 6
-[Viikko 6](https://github.com/jyrki26/ot-harjoitustyo/releases/tag/viikko5)
+[Viikko 6](https://github.com/jyrki26/ot-harjoitustyo/releases/tag/viikko6)
+
 
 ## Komentorivitoiminnot
 
@@ -57,3 +57,10 @@ Ohjelmasta voi luoda jar-tiedoston antamalla konsolissa kansiossa, jossa ohjelma
 mvn package
 ```
 Komento generoi hakemistoon target suoritettavan jar-tiedoston *Kieltenharjoitteluohjelma-1.0-SNAPSHOT.jar*
+
+#### JavaDoc
+JavaDoc generoidaan komennolla:
+```console
+mvn javadoc:javadoc
+```
+JavaDocia voi tarkastella avaamalla selaimella tiedosto target/site/apidocs/index.html
