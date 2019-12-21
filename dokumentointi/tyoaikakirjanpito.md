@@ -15,7 +15,13 @@ Päivä | Aika | Mitä tein
 6.12.2019 | 2 | Sovelluslogiikan tekoa.
 9.12.2019 | 6 | Graafisen käyttöliittymän tekoa ja bugien korjausta.
 10.12.2019 | 6 | Bugien korjausta ja dokumentaation päivittämistä.
-
+12.12.2019 | 2 | SQL-yhteyden tekoa.
+14.12.2019 | 8 | SQL-yhteyden ja sovelluslogiikan tekoa.
+15.12.2019 | 9 | SQL-yhteyden ja sovelluslogiikan tekoa.
+17.12.2019 | 8 | Graafisen käyttöliittymän tekoa ja testauksen kehittämistä.
+18.12.2019 | 2 | Virheviestien lisäämistä.
+19.12.2019 | 5 | Yksikkötestauksen tekoa.
+20.12.2019 | 3 | Käyttäjätilastoinnin suunnittelua.
 
 <br/>
-Yhteensä : 66 h
+Yhteensä : 103 h
