@@ -23,6 +23,7 @@ Päivä | Aika | Mitä tein
 19.12.2019 | 5 | Yksikkötestauksen tekoa.
 20.12.2019 | 3 | Käyttäjätilastoinnin suunnittelua.
 21.12.2019 | 11 | Dokumentaation päivittämistä ja virheiden korjausta.
+22.12.2019 | 2 | Jar-tiedoston ja tietokannan yhteensovittamista.
 
 <br/>
-Yhteensä : 114 h
+Yhteensä : 116 h
