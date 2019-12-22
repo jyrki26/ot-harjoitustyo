@@ -19,10 +19,10 @@ Sovelluksen tarkoituksena on auttaa käyttäjää vieraan kielen sanojen opiskel
 
 #### Ohjelman käynnistäminen
 
-Ohjelman voi käynnistää antamlla terminaalissa kansiossa, johon on ladannut Loppupalautus-releasesta kieltenharjoittelu.jar -tiedoston, komennon:
+Ohjelman voi käynnistää antamlla terminaalissa kansiossa, johon on ladannut Loppupalautus-releasesta Kieltenharjoitteluohjelma.jar -tiedoston, komennon:
 
 ```console
-java -jar kieltenharjoittelu.jar
+java -jar Kieltenharjoitteluohjelma.jar
 ```
 
 tai lataamalla ohjelman kokonaan ja antamalla komennon.

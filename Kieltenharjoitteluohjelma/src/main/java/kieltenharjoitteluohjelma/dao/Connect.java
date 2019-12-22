@@ -18,8 +18,7 @@ public class Connect implements DatabaseConnection {
     public Connection connect() {
         Connection conn = null;
         try {
-            String url = "jdbc:sqlite:database";
-
+            String url = "jdbc:sqlite::resource:database/database";
             conn = DriverManager.getConnection(url);
 
         } catch (SQLException e) {

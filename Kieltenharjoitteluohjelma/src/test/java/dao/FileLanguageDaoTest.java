@@ -2,7 +2,6 @@ package dao;
 
 import java.sql.SQLException;
 import java.util.HashMap;
-import kieltenharjoitteluohjelma.dao.Connect;
 import kieltenharjoitteluohjelma.dao.DatabaseConnection;
 import kieltenharjoitteluohjelma.dao.FileLanguageDao;
 import org.junit.Test;
